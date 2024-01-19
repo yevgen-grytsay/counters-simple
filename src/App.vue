@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Diff></Diff>
+    <Counters id="counters-summary"></Counters>
     <!-- <p>{{dateToday}}</p> -->
     <div class="bill-row">
       {{ coldWaterLabel }} = <strong>{{ coldWaterTotal }} грн.</strong>
@@ -25,6 +26,7 @@
 
 <script>
 import Diff from './components/Diff.vue';
+import Counters from "./components/Counters.vue";
 import html2canvas from 'html2canvas';
 import { diffNumber } from "./store.js";
 
@@ -32,6 +34,7 @@ export default {
   name: 'App',
   components: {
     Diff,
+    Counters,
   },
   computed: {
     dateToday() {
@@ -283,9 +286,13 @@ export default {
       const btn = document.getElementById('printButton');
       btn.style.display = 'none';
 
+      const countersSummary = document.getElementById('counters-summary');
+      countersSummary.style.display = 'none';
+
       html2canvas(document.getElementById('app')).then(function(canvas) {
         document.body.appendChild(canvas);
         btn.style.display = 'block';
+        countersSummary.style.display = 'block';
       });
 
       /*var container = document.getElementById("image-wrap");*/ /*specific element on page*/
