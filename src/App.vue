@@ -256,7 +256,7 @@ export default {
         },
         {
           title: 'Вивезення побутових відходів',
-          value: 40.87,
+          value: 40.21,
           group: '',
         },
         {
@@ -266,7 +266,7 @@ export default {
         },
         {
           title: 'Централізоване опалення',
-          value: 775.26,
+          value: 1157.43,
           group: '',
         },
         {

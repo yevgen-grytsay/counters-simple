@@ -1,6 +1,6 @@
 
-const prevDateStr = '2023-11-15';
-const curDateStr = '2023-12-15';
+const prevDateStr = '2023-12-15';
+const curDateStr = '2024-01-19';
 const snapshotList = [
     {
         dateStr: '2023-10-15',
@@ -105,6 +105,42 @@ const snapshotList = [
                 counterKey: 'electricity-night',
                 resourceKey: 'electricity',
                 value: 33.0,
+            },
+        ],
+    },
+
+    {
+        dateStr: '2024-01-19',
+        values: [
+            {
+                counterKey: 'coldWater-kitchen',
+                resourceKey: 'coldWater',
+                value: 39.0,
+            },
+            {
+                counterKey: 'coldWater-bathroom',
+                resourceKey: 'coldWater',
+                value: 278.7,
+            },
+            {
+                counterKey: 'hotWater-kitchen',
+                resourceKey: 'hotWater',
+                value: 38.9,
+            },
+            {
+                counterKey: 'hotWater-bathroom',
+                resourceKey: 'hotWater',
+                value: 41.3,
+            },
+            {
+                counterKey: 'electricity-day',
+                resourceKey: 'electricity',
+                value: 314.3,
+            },
+            {
+                counterKey: 'electricity-night',
+                resourceKey: 'electricity',
+                value: 48.1,
             },
         ],
     },
