@@ -4,14 +4,14 @@
     <Counters id="counters-summary"></Counters>
     <!-- <p>{{dateToday}}</p> -->
     <div class="bill-row">
-      {{ coldWaterLabel }} = <strong>{{ coldWaterTotal }} грн.</strong>
+      <span v-html="coldWaterLabel"></span> = <strong><span v-html="coldWaterTotal"></span> грн.</strong>
     </div>
     <div class="bill-row">
-      {{ hotWaterLabel }} = <strong>{{ hotWaterTotal }} грн.</strong>
+      <span v-html="hotWaterLabel"></span> = <strong>{{ hotWaterTotal }} грн.</strong>
     </div>
     <div class="bill-row">
-      Електроенергія {{ electricityHint }} =
-      <strong>{{ electricityTotal }} грн.</strong>
+      <span v-html="electricityHint"></span> =
+      <strong><span v-html="electricityTotal"></span> грн.</strong>
     </div>
     <div v-for="item in bills" class="bill-row">
       {{ item.title }}: <strong>{{ item.value }} грн.</strong>
@@ -47,12 +47,12 @@ export default {
       const sumString = diffValues.map((item) => item.diff).join(' + ');
 
       if (false) {
-        return `Холодна вода (${sumString}) ${this.counters.coldWater.units} * ${this.counters.coldWater.rate} ${this.counters.coldWater.rateUnits}`;
+        return `Холодна вода (${sumString}) ${this.tariffMap.coldWater.units} * ${this.tariffMap.coldWater.rate} ${this.tariffMap.coldWater.rateUnits}`;
       }
 
       const hotWaterTotal = this.coldWaterTotalCounters.toFixed(1);
 
-      return `Холодна вода ${hotWaterTotal} ${this.counters.coldWater.units} * ${this.counters.coldWater.rate} ${this.counters.coldWater.rateUnits}`;
+      return `Холодна вода: <span class="value">${hotWaterTotal} ${this.tariffMap.coldWater.units}</span> * <span class="value">${this.tariffMap.coldWater.rate} ${this.tariffMap.coldWater.rateUnits}</span>`;
     },
     hotWaterLabel() {
       const diffValues = this.diffs.filter(
@@ -61,12 +61,12 @@ export default {
       const sumString = diffValues.map((item) => item.diff).join(' + ');
 
       if (false) {
-        return `Гаряча вода (${sumString}) ${this.counters.hotWater.units} * ${this.counters.hotWater.rate} ${this.counters.hotWater.rateUnits}`;
+        return `Гаряча вода (${sumString}) <span class="value">${this.tariffMap.hotWater.units}</span> * <span class="value">${this.tariffMap.hotWater.rate} ${this.tariffMap.hotWater.rateUnits}</span>`;
       }
 
       const coldWaterTotal = this.hotWaterTotalCounters.toFixed(1);
 
-      return `Гаряча вода ${coldWaterTotal} ${this.counters.hotWater.units} * ${this.counters.hotWater.rate} ${this.counters.hotWater.rateUnits}`;
+      return `Гаряча вода: <span class="value">${coldWaterTotal} ${this.tariffMap.hotWater.units}</span> * <span class="value">${this.tariffMap.hotWater.rate} ${this.tariffMap.hotWater.rateUnits}</span>`;
 
     },
     coldWaterTotalCounters() {
@@ -86,12 +86,12 @@ export default {
       return sum;
     },
     coldWaterTotal() {
-      const result = this.coldWaterTotalCounters * this.counters.coldWater.rate;
+      const result = this.coldWaterTotalCounters * this.tariffMap.coldWater.rate;
 
       return result.toFixed(2);
     },
     hotWaterTotal() {
-      const result = this.hotWaterTotalCounters * this.counters.hotWater.rate;
+      const result = this.hotWaterTotalCounters * this.tariffMap.hotWater.rate;
 
       return result.toFixed(2);
     },
@@ -103,7 +103,7 @@ export default {
           (item) => item.rateKey === 'electricityNight'
       );
 
-      return `${nightDiff.diff} ${this.counters.electricityNight.units} * ${this.counters.electricityNight.rate} ${this.counters.electricityNight.rateUnits} + ${dayDiff.diff} ${this.counters.electricityDay.units} * ${this.counters.electricityDay.rate} ${this.counters.electricityDay.rateUnits}`;
+      return `Електроенергія: <span class="value">${nightDiff.diff} ${this.tariffMap.electricityNight.units}</span> * <span class="value">${this.tariffMap.electricityNight.rate} ${this.tariffMap.electricityNight.rateUnits}</span> + <span class="value">${dayDiff.diff} ${this.tariffMap.electricityDay.units}</span> * <span class="value">${this.tariffMap.electricityDay.rate} ${this.tariffMap.electricityDay.rateUnits}</span>`;
     },
     electricityTotal() {
       const dayDiff = this.diffs.find(
@@ -113,8 +113,8 @@ export default {
           (item) => item.rateKey === 'electricityNight'
       );
       const total =
-          dayDiff.diff * this.counters.electricityDay.rate +
-          nightDiff.diff * this.counters.electricityNight.rate;
+          dayDiff.diff * this.tariffMap.electricityDay.rate +
+          nightDiff.diff * this.tariffMap.electricityNight.rate;
 
       return total.toFixed(2);
     },
@@ -122,7 +122,7 @@ export default {
       const list = [];
 
       this.counterKeys.forEach((key) => {
-        const rate = this.counters[key].rate;
+        const rate = this.tariffMap[key].rate;
         const diffValues = this.diffs.filter((item) => item.rateKey === key);
         const sumString = diffValues.map((item) => item.diff).join(' + ');
         const diffTotal = diffValues.reduce(
@@ -156,7 +156,7 @@ export default {
       let total = 0;
 
       const counterSum = this.counterKeys.reduce((sum, key) => {
-        const rate = this.counters[key].rate;
+        const rate = this.tariffMap[key].rate;
         const values = this.diffs.filter((item) => item.rateKey === key);
         const diffTotal = values.reduce((total, item) => total + item.diff, 0);
         const result = diffTotal * rate;
@@ -181,7 +181,7 @@ export default {
         'electricityNight',
         'electricityDay',
       ],
-      counters: {
+      tariffMap: {
         coldWater: {
           rate: 30.384,
           units: 'м3',
@@ -259,7 +259,7 @@ export default {
         },
         {
           title: 'Вивезення побутових відходів',
-          value: 40.21,
+          value: 43.11,
           group: '',
         },
         {
@@ -269,7 +269,7 @@ export default {
         },
         {
           title: 'Централізоване опалення',
-          value: 1157.43,
+          value: 1089.59,
           group: '',
         },
         {
@@ -329,5 +329,13 @@ export default {
 .grand-total-row {
   font-weight: bold;
   font-size: 110%;
+}
+.value {
+  font-family: monospace;
+  font-size: 1.3em;
+  //font-weight: bold;
+  border: 1px solid #dedede;
+  border-radius: 3px;
+  padding: 0 3px;
 }
 </style>
