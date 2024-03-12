@@ -1,0 +1,12 @@
+stages:
+  - test
+
+default:
+  image: node:lts-alpine
+
+tests-job:
+  stage: test
+  before_script:
+    - npm install
+  script:
+    - npm test -- --run
