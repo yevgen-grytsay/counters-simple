@@ -28,7 +28,7 @@
 import Diff from './components/Diff.vue';
 import Counters from "./components/Counters.vue";
 import html2canvas from 'html2canvas';
-import { diffNumber } from "./store.js";
+import { diffNumber, getCurrentBills } from "./store.js";
 
 export default {
   name: 'App',
@@ -172,6 +172,10 @@ export default {
 
       return total.toFixed(2);
     },
+
+    bills() {
+      return getCurrentBills();
+    }
   },
   data() {
     return {
@@ -239,43 +243,6 @@ export default {
           key: 'Електроенергія (день)',
           diff: diffNumber('electricity-day'),
           rateKey: 'electricityDay',
-        },
-      ],
-      bills: [
-        {
-          title: 'АО ГВ',
-          value: 15.35,
-          group: '',
-        },
-        {
-          title: 'АО ТЕ',
-          value: 31.07,
-          group: '',
-        },
-        {
-          title: 'АО ХВВ',
-          value: 39.19,
-          group: '',
-        },
-        {
-          title: 'Вивезення побутових відходів',
-          value: 43.11,
-          group: '',
-        },
-        {
-          title: 'Управління багатоквартирним будинком',
-          value: 303.63,
-          group: '',
-        },
-        {
-          title: 'Централізоване опалення',
-          value: 1089.59,
-          group: '',
-        },
-        {
-          title: 'Відшкодування витрат з електроенергії',
-          value: 39.15,
-          group: '',
         },
       ],
     };

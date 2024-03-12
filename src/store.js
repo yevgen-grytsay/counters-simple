@@ -178,8 +178,49 @@ const snapshotList = [
                 value: 56.4,
             },
         ],
+        bills: [
+            {
+                title: 'АО ГВ',
+                value: 15.35,
+                group: '',
+            },
+            {
+                title: 'АО ТЕ',
+                value: 31.07,
+                group: '',
+            },
+            {
+                title: 'АО ХВВ',
+                value: 39.19,
+                group: '',
+            },
+            {
+                title: 'Вивезення побутових відходів',
+                value: 43.11,
+                group: '',
+            },
+            {
+                title: 'Управління багатоквартирним будинком',
+                value: 303.63,
+                group: '',
+            },
+            {
+                title: 'Централізоване опалення',
+                value: 1089.59,
+                group: '',
+            },
+            {
+                title: 'Відшкодування витрат з електроенергії',
+                value: 39.15,
+                group: '',
+            },
+        ],
     }
 ];
+
+export function getCurrentBills() {
+    return currentSnapshot.bills;
+}
 
 export const prevSnapshot = (() => {
     // console.log(['date', prevDateStr]);
