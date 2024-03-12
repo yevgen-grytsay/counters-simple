@@ -151,7 +151,7 @@ export default {
       return list;
     },
     grandTotal() {
-      console.log(this.totalList);
+      // console.log(this.totalList);
 
       let total = 0;
 

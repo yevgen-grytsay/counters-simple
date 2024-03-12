@@ -182,7 +182,7 @@ const snapshotList = [
 ];
 
 export const prevSnapshot = (() => {
-    console.log(['date', prevDateStr]);
+    // console.log(['date', prevDateStr]);
     let obj = snapshotList.find(item => item.dateStr === prevDateStr);
 
     obj.map = Object.fromEntries(
