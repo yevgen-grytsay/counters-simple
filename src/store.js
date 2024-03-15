@@ -1,6 +1,6 @@
 
-const prevDateStr = '2024-01-19';
-const curDateStr = '2024-02-16';
+const prevDateStr = '2024-02-16';
+const curDateStr = '2024-03-15';
 const snapshotList = [
     {
         dateStr: '2023-10-15',
@@ -207,6 +207,78 @@ const snapshotList = [
             {
                 title: 'Централізоване опалення',
                 value: 1089.59,
+                group: '',
+            },
+            {
+                title: 'Відшкодування витрат з електроенергії',
+                value: 39.15,
+                group: '',
+            },
+        ],
+    },
+    {
+        dateStr: '2024-03-15',
+        values: [
+            {
+                counterKey: 'coldWater-kitchen',
+                resourceKey: 'coldWater',
+                value: 39.1,
+            },
+            {
+                counterKey: 'coldWater-bathroom',
+                resourceKey: 'coldWater',
+                value: 280.0,
+            },
+            {
+                counterKey: 'hotWater-kitchen',
+                resourceKey: 'hotWater',
+                value: 39.1,
+            },
+            {
+                counterKey: 'hotWater-bathroom',
+                resourceKey: 'hotWater',
+                value: 41.3,
+            },
+            {
+                counterKey: 'electricity-day',
+                resourceKey: 'electricity',
+                value: 362.9,
+            },
+            {
+                counterKey: 'electricity-night',
+                resourceKey: 'electricity',
+                value: 62.7,
+            },
+        ],
+        bills: [
+            {
+                title: 'АО ГВ',
+                value: 15.35,
+                group: '',
+            },
+            {
+                title: 'АО ТЕ',
+                value: 31.07,
+                group: '',
+            },
+            {
+                title: 'АО ХВВ',
+                value: 39.19,
+                group: '',
+            },
+            {
+                title: 'Вивезення побутових відходів',
+                value: 43.45,
+                group: '',
+            },
+            {
+                title: 'Управління багатоквартирним будинком',
+                value: 303.63,
+                group: '',
+            },
+            {
+                title: 'Централізоване опалення',
+                value: 951.12,
                 group: '',
             },
             {
