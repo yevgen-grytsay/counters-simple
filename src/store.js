@@ -1,6 +1,6 @@
 
-const prevDateStr = '2024-03-15';
-const curDateStr = '2024-04-15';
+const prevDateStr = '2024-04-15';
+const curDateStr = '2024-05-17';
 const snapshotList = [
     {
         dateStr: '2023-10-15',
@@ -360,6 +360,78 @@ const snapshotList = [
             },
         ],
     },
+    {
+        dateStr: '2024-05-17',
+        values: [
+            {
+                counterKey: 'coldWater-kitchen',
+                resourceKey: 'coldWater',
+                value: 39.1,
+            },
+            {
+                counterKey: 'coldWater-bathroom',
+                resourceKey: 'coldWater',
+                value: 280.1,
+            },
+            {
+                counterKey: 'hotWater-kitchen',
+                resourceKey: 'hotWater',
+                value: 39.1,
+            },
+            {
+                counterKey: 'hotWater-bathroom',
+                resourceKey: 'hotWater',
+                value: 41.3,
+            },
+            {
+                counterKey: 'electricity-day',
+                resourceKey: 'electricity',
+                value: 388.7,
+            },
+            {
+                counterKey: 'electricity-night',
+                resourceKey: 'electricity',
+                value: 74.9,
+            },
+        ],
+        bills: [
+            {
+                title: 'АО ГВ',
+                value: 15.35,
+                group: '',
+            },
+            {
+                title: 'АО ТЕ',
+                value: 31.07,
+                group: '',
+            },
+            {
+                title: 'АО ХВВ',
+                value: 39.19,
+                group: '',
+            },
+            {
+                title: 'Централізоване опалення',
+                value: 200.35,
+                group: '',
+            },
+            {
+                title: 'Вивезення побутових відходів',
+                value: 43.32,
+                group: '',
+            },
+            {
+                title: 'Управління багатоквартирним будинком',
+                value: 303.63,
+                group: '',
+            },
+            {
+                title: 'Відшкодування витрат з електроенергії',
+                value: 39.15,
+                group: '',
+            },
+        ],
+    }
 ];
 
 export function getCurrentBills() {
@@ -449,4 +521,3 @@ export function diffSumNumber(keys) {
         return sum + diffNumber(key);
     }, 0);
 }
-
